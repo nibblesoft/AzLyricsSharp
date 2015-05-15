@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzLyricsSharpApi", "AzLyricsSharpApi\AzLyricsSharpApi.csproj", "{F14A7107-C6DA-4D22-BFB6-2BB49E955A5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzLyricsSharpApiTests", "AzLyricsSharpApiTests\AzLyricsSharpApiTests.csproj", "{AA1556EC-1EFE-4EC5-AF00-7C796BAD774F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F14A7107-C6DA-4D22-BFB6-2BB49E955A5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14A7107-C6DA-4D22-BFB6-2BB49E955A5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14A7107-C6DA-4D22-BFB6-2BB49E955A5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14A7107-C6DA-4D22-BFB6-2BB49E955A5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1556EC-1EFE-4EC5-AF00-7C796BAD774F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1556EC-1EFE-4EC5-AF00-7C796BAD774F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1556EC-1EFE-4EC5-AF00-7C796BAD774F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1556EC-1EFE-4EC5-AF00-7C796BAD774F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

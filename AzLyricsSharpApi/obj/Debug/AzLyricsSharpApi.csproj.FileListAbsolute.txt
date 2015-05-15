@@ -1,0 +1,10 @@
+C:\Users\Ivandrofly\AppData\Local\Temporary Projects\AzLyricsSharpApi\bin\Debug\AzLyricsSharpApi.dll
+C:\Users\Ivandrofly\AppData\Local\Temporary Projects\AzLyricsSharpApi\bin\Debug\AzLyricsSharpApi.pdb
+C:\Users\Ivandrofly\AppData\Local\Temporary Projects\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.csprojResolveAssemblyReference.cache
+C:\Users\Ivandrofly\AppData\Local\Temporary Projects\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.dll
+C:\Users\Ivandrofly\AppData\Local\Temporary Projects\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.pdb
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApi\bin\Debug\AzLyricsSharpApi.dll
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApi\bin\Debug\AzLyricsSharpApi.pdb
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.csprojResolveAssemblyReference.cache
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.dll
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApi\obj\Debug\AzLyricsSharpApi.pdb

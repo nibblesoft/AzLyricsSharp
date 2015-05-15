@@ -1,0 +1,7 @@
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\bin\Debug\AzLyricsSharpApiTests.dll
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\bin\Debug\AzLyricsSharpApiTests.pdb
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\bin\Debug\AzLyricsSharpApi.dll
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\bin\Debug\AzLyricsSharpApi.pdb
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\obj\Debug\AzLyricsSharpApiTests.csprojResolveAssemblyReference.cache
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\obj\Debug\AzLyricsSharpApiTests.dll
+C:\Users\Ivandrofly\Repos\AzLyricsSharpApi\AzLyricsSharpApiTests\obj\Debug\AzLyricsSharpApiTests.pdb

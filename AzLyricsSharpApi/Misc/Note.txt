@@ -1,0 +1,19 @@
+﻿var client = new HttpClient();
+client = new HttpClient(new HttpClientHandler
+{
+    AutomaticDecompression = DecompressionMethods.GZip
+                                | DecompressionMethods.Deflate
+});
+
+client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
+client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36");
+client.DefaultRequestHeaders.Add("Accept-Encoding", "gzip,deflate,sdch");
+lyrics = await client.GetStringAsync(_uri);
+
+
+/* Usage */
+//string address = "http://vnexpress.net";
+//MyWebClient webClient = new MyWebClient();
+//webClient.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11 AlexaToolbar/alxg-3.1");
+//webClient.Encoding = System.Text.Encoding.UTF8;
+//return webClient.DownloadString(address);
