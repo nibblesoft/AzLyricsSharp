@@ -8,16 +8,21 @@ namespace AzLyricsSharpApi
     public class AzLyrics
     {
         const string _url = "http://www.azlyrics.com/lyrics/";
-        Uri _uri;
+        private int _error;
+
+        public int Error { get { return _error; } }
+
+        private Uri _uri;
         public AzLyrics(string artist, string title)
         {
-            artist = FixInput(artist.ToLowerInvariant());
-            title = FixInput(title.ToLowerInvariant());
+            // http://www.azlyrics.com/lyrics/youngthug/richniggashit.htm
+            artist = StripWhiteSpaces(artist.ToLowerInvariant());
+            title = StripWhiteSpaces(title.ToLowerInvariant());
             _uri = new Uri(_url + artist + "/" + title + ".html", UriKind.Absolute);
         }
 
 
-        private string FixInput(string input)
+        private string StripWhiteSpaces(string input)
         {
             return input = input.Replace(" ", string.Empty);
         }
@@ -33,9 +38,14 @@ namespace AzLyricsSharpApi
                 try
                 {
                     var date = webClient.DownloadString(_uri);
+                    //var date = Encoding.UTF8.GetString(webClient.DownloadData(_uri));
                     lyrics = ExtractLyricsFromHtml(date);
                 }
-                catch (WebException ex) { }
+                catch (WebException ex)
+                {
+                    // Do not continue if error if > 0
+                    _error++;
+                }
             }
             return lyrics;
         }
@@ -46,6 +56,7 @@ namespace AzLyricsSharpApi
             var idx = htmlPage.IndexOf(find1, StringComparison.Ordinal);
             if (idx > 0)
             {
+                // Remove from start to "<!-- AddThis Button END -->" length
                 htmlPage = htmlPage.Remove(0, idx + find1.Length).TrimStart();
                 idx = htmlPage.IndexOf("<!-- MxM banner -->", StringComparison.Ordinal);
                 if (idx > 0)
@@ -60,6 +71,7 @@ namespace AzLyricsSharpApi
 
         private string RemoveAllHtmlTags(string html)
         {
+            /*
             html = html.Replace("<i>", string.Empty);
             html = html.Replace("</i>", string.Empty);
             html = html.Replace("<h1>", string.Empty);
@@ -69,34 +81,40 @@ namespace AzLyricsSharpApi
             html = html.Replace("<br>", string.Empty);
             html = html.Replace("<b>", string.Empty);
             html = html.Replace("</b>", string.Empty);
+            */
 
-            var idx = html.IndexOf('<');
+            var idx = html.IndexOf("<form id=\"addsong\"");
+            if(idx > 20)
+            {
+                html = html.Substring(0, idx);
+            }
+
+            // strip all html-tags
+            idx = html.IndexOf('<');
             while (idx >= 0)
             {
                 var endIdx = html.IndexOf('>', idx + 1);
-                if (endIdx > idx)
-                {
-                    /*var tag = html.Substring(idx, endIdx - idx + 1);
-                    if (tag == "<i>" || tag == "</i>" || tag == "<div>" || tag == "</div>" || tag == "<br>" || tag == "<br>" || tag == "<b>" || tag == "</b>")
-                    {
-                        html = html.Remove(idx, endIdx - idx + 1);
-                    }*/
-                    html = html.Remove(idx, endIdx - idx + 1);
-                }
+                if (endIdx < idx)
+                    break;
+                html = html.Remove(idx, endIdx - idx + 1);
                 idx = html.IndexOf('<', idx);
             }
+
+            // fix recursive white-spaces
             while (html.Contains("  "))
             {
                 html = html.Replace("  ", " ");
             }
+
+            // fix recursive line-break
             while (html.Contains("\r\n\r\n\r\n"))
                 html = html.Replace("\r\n\r\n\r\n", "\r\n\r\n");
             return html;
         }
 
-        private bool IsValidUri()
+        private bool IsValidUri(string url)
         {
-            if (_uri == null)
+            if (string.IsNullOrWhiteSpace(url) || !Uri.TryCreate(url, UriKind.Absolute, out _uri))
                 return false;
             return true;
         }

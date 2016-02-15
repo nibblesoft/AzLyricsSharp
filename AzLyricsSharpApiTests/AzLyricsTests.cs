@@ -4,20 +4,20 @@ using System.IO;
 
 namespace AzLyricsSharpApi.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class AzLyricsTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void AzLyricsTest()
         {
-            var artist = "2 Chainz";
-            var title = "dresser lil boy";
+            var artist = "lil wayne";
+            var title = "no worries";
             var azLyrics = new AzLyrics(artist, title);
             var lyrics = azLyrics.GetLyris();
             var path = "D:\\Downloaded Lyrics\\" + artist + " - " + title + ".txt";
-            if (lyrics.Length > 10)
+            if (lyrics.Length > 10 && azLyrics.Error == 0)
             {
-                File.WriteAllText(path, lyrics);
+                File.WriteAllText(path, lyrics, Encoding.UTF8);
                 Assert.IsTrue(true);
             }
             else

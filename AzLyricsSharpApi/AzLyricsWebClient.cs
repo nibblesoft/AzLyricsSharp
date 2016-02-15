@@ -9,6 +9,7 @@ namespace AzLyricsSharpApi
         {
             // this method GetWebRequest is only available form derived classes 'base.GetWebRequest()'
             HttpWebRequest req = base.GetWebRequest(address) as HttpWebRequest;
+            req.KeepAlive = false;
             if (req != null)
             {
                 req.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
