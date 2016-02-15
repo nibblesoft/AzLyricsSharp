@@ -1,0 +1,11 @@
+/AzLyricsSharpApi/bin/
+/AzLyricsSharpApi/obj/
+/AzLyricsSharpApi/Misc/
+/AzLyricsSharpApiTests/bin/
+/AzLyricsSharpApiTests/obj/
+*.user
+*.suo
+*.csproj
+
+# Visual Studio 2015
+*.ide
