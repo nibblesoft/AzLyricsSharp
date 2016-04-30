@@ -7,7 +7,6 @@ namespace AzLyricsSharpApi
         // http://stackoverflow.com/questions/15034771/cant-download-utf-8-web-content
         protected override WebRequest GetWebRequest(Uri address)
         {
-            // this method GetWebRequest is only available form derived classes 'base.GetWebRequest()'
             HttpWebRequest req = base.GetWebRequest(address) as HttpWebRequest;
             req.KeepAlive = false;
             if (req != null)
