@@ -7,7 +7,7 @@ namespace AzLyricsSharpApi
 {
     public class AzLyrics
     {
-        const string _url = "http://www.azlyrics.com/lyrics/";
+        private const string _url = "http://www.azlyrics.com/lyrics/";
         private int _error;
 
         public int Error { get { return _error; } }
@@ -16,15 +16,9 @@ namespace AzLyricsSharpApi
         public AzLyrics(string artist, string title)
         {
             // http://www.azlyrics.com/lyrics/youngthug/richniggashit.htm
-            artist = StripWhiteSpaces(artist.ToLowerInvariant());
-            title = StripWhiteSpaces(title.ToLowerInvariant());
+            artist = StringUtils.StripWhiteSpaces(artist.ToLowerInvariant());
+            title = StringUtils.StripWhiteSpaces(title.ToLowerInvariant());
             _uri = new Uri(_url + artist + "/" + title + ".html", UriKind.Absolute);
-        }
-
-
-        private string StripWhiteSpaces(string input)
-        {
-            return input = input.Replace(" ", string.Empty);
         }
 
         public string GetLyris()
@@ -34,7 +28,6 @@ namespace AzLyricsSharpApi
             {
                 webClient.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.114 Safari/537.36");
                 webClient.Encoding = Encoding.UTF8;
-                // If file name or title is invalid this will throw
                 try
                 {
                     var date = webClient.DownloadString(_uri);
@@ -43,7 +36,6 @@ namespace AzLyricsSharpApi
                 }
                 catch (WebException ex)
                 {
-                    // Do not continue if error if > 0
                     _error++;
                 }
             }
@@ -71,34 +63,13 @@ namespace AzLyricsSharpApi
 
         private string RemoveAllHtmlTags(string html)
         {
-            /*
-            html = html.Replace("<i>", string.Empty);
-            html = html.Replace("</i>", string.Empty);
-            html = html.Replace("<h1>", string.Empty);
-            html = html.Replace("</h1>", string.Empty);
-            html = html.Replace("<div>", string.Empty);
-            html = html.Replace("</div>", string.Empty);
-            html = html.Replace("<br>", string.Empty);
-            html = html.Replace("<b>", string.Empty);
-            html = html.Replace("</b>", string.Empty);
-            */
-
             var idx = html.IndexOf("<form id=\"addsong\"");
-            if(idx > 20)
+            if (idx > 20)
             {
                 html = html.Substring(0, idx);
             }
 
-            // strip all html-tags
-            idx = html.IndexOf('<');
-            while (idx >= 0)
-            {
-                var endIdx = html.IndexOf('>', idx + 1);
-                if (endIdx < idx)
-                    break;
-                html = html.Remove(idx, endIdx - idx + 1);
-                idx = html.IndexOf('<', idx);
-            }
+            html = StringUtils.RemoveHtmlTags(html);
 
             // fix recursive white-spaces
             while (html.Contains("  "))
