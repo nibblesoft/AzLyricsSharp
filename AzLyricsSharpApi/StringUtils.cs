@@ -21,7 +21,7 @@ namespace AzLyricsSharpApi
                 text = text.Remove(idx, endIdx - idx + 1);
                 idx = text.IndexOf('<', idx);
             }
-            return string.Empty;
+            return text;
         }
 
         public static string StripWhiteSpaces(string input)

@@ -57,8 +57,7 @@ namespace AzLyricsSharpApi
                     htmlPage = WebUtility.HtmlDecode(htmlPage);
                 }
             }
-            htmlPage = RemoveAllHtmlTags(htmlPage).Trim();
-            return htmlPage;
+            return RemoveAllHtmlTags(htmlPage).Trim();
         }
 
         private string RemoveAllHtmlTags(string html)
@@ -85,9 +84,8 @@ namespace AzLyricsSharpApi
 
         private bool IsValidUri(string url)
         {
-            if (string.IsNullOrWhiteSpace(url) || !Uri.TryCreate(url, UriKind.Absolute, out _uri))
-                return false;
-            return true;
+            return !((string.IsNullOrWhiteSpace(url)) && (!Uri.TryCreate(url, UriKind.Absolute, out _uri)));
         }
+
     }
 }
