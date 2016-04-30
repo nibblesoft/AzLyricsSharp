@@ -5,28 +5,6 @@ using System.Text;
 
 namespace AzLyricsSharpApi
 {
-
-    abstract class Contribuitor
-    {
-        public string Name { get; protected set; }
-    }
-
-    class Writer : Contribuitor
-    {
-        public Writer(string name)
-        {
-            Name = name;
-        }
-    }
-
-    class Corrector : Contribuitor
-    {
-        public Corrector(string name)
-        {
-            Name = name;
-        }
-    }
-
     class LyricsInfo
     {
         private List<Writer> _writers;
