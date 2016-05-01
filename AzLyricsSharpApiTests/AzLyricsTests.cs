@@ -21,13 +21,9 @@ namespace AzLyricsSharpApi.Tests
                 Assert.IsTrue(true);
             }
             else
-                Assert.Fail();
-            /*using (FileStream file = File.Create(path))
             {
-                file.Write(Encoding.UTF8.GetBytes(lyrics), 0, lyrics.Length);
-            }*/
-            //TextWriter tr = TextWriter.Null;
-            //System.Threading.Thread.Sleep(100000);
+                Assert.Fail();
+            }
         }
     }
 }
