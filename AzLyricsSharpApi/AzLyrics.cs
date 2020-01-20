@@ -1,24 +1,44 @@
 ﻿using System;
 using System.Net;
 using System.Text;
-//using System.Web;
 
 namespace AzLyricsSharpApi
 {
     public class AzLyrics
     {
-        private const string _url = "http://www.azlyrics.com/lyrics/";
-        private int _error;
+        private readonly Uri _baseUri;
 
-        public int Error { get { return _error; } }
+        /// <summary>
+        /// Has the error count of the operation
+        /// </summary>
+        public int Error { get; private set; }
 
         private Uri _uri;
-        public AzLyrics(string artist, string title)
+
+        public AzLyrics(string endpoint = "http://www.azlyrics.com/lyrics/")
+            : this(new Uri(endpoint))
+        {
+
+        }
+
+        public AzLyrics(Uri endpoint)
+        {
+            _baseUri = endpoint;
+
+            // todo: init the http web-client here
+        }
+
+        public string Search(string title, string artist)
         {
             // http://www.azlyrics.com/lyrics/youngthug/richniggashit.htm
             artist = StringUtils.StripWhiteSpaces(artist.ToLowerInvariant());
             title = StringUtils.StripWhiteSpaces(title.ToLowerInvariant());
-            _uri = new Uri(_url + artist + "/" + title + ".html", UriKind.Absolute);
+
+            //_uri = new Uri(_url + artist + "/" + title + ".html", UriKind.Absolute);
+
+            new Uri(_baseUri, $"{artist}/{title}.html");
+
+            return null;
         }
 
         public string GetLyris()
@@ -36,7 +56,7 @@ namespace AzLyricsSharpApi
                 }
                 catch (WebException ex)
                 {
-                    _error++;
+                    Error++;
                 }
             }
             return lyrics;
@@ -78,14 +98,14 @@ namespace AzLyricsSharpApi
 
             // fix recursive line-break
             while (html.Contains("\r\n\r\n\r\n"))
+            {
                 html = html.Replace("\r\n\r\n\r\n", "\r\n\r\n");
+            }
+
             return html;
         }
 
-        private bool IsValidUri(string url)
-        {
-            return !((string.IsNullOrWhiteSpace(url)) && (!Uri.TryCreate(url, UriKind.Absolute, out _uri)));
-        }
+        private bool IsValidUri(string url) => !(string.IsNullOrWhiteSpace(url) && (!Uri.TryCreate(url, UriKind.Absolute, out _uri)));
 
     }
 }

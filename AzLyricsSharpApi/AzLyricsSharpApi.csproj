@@ -42,15 +42,15 @@
     <Compile Include="AzLyricsWebClient.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Classes\Contribuitor.cs" />
-    <Compile Include="Classes\Corrector.cs" />
-    <Compile Include="Classes\LyricsInfo.cs" />
-    <Compile Include="Classes\Writer.cs" />
+    <Compile Include="Models\Contribuitor.cs" />
+    <Compile Include="Models\Corrector.cs" />
+    <Compile Include="Models\LyricsInfo.cs" />
+    <Compile Include="Models\Writer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Misc\Note.txt" />
+    <Content Include="Utils\Note.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

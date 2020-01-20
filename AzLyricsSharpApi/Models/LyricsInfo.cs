@@ -21,7 +21,9 @@ namespace AzLyricsSharpApi
 
             _writers = new List<Writer>();
             for (int i = 0; i < writers.Length; i++)
+            {
                 _writers.Add(new Writer(writers[i]));
+            }
         }
     }
 }
