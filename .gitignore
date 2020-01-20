@@ -8,3 +8,4 @@
 
 # Visual Studio 2015
 *.ide
+.vs/
