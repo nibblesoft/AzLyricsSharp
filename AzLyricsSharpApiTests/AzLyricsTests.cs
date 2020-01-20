@@ -14,14 +14,17 @@ namespace AzLyricsSharpApi.Tests
             var title = "no worries";
             var azLyrics = new AzLyrics(artist, title);
             var lyrics = azLyrics.GetLyris();
-            var path = "D:\\Downloaded Lyrics\\" + artist + " - " + title + ".txt";
+            var path = "Downloaded Lyrics\\" + artist + " - " + title + ".txt";
             if (lyrics.Length > 10 && azLyrics.Error == 0)
             {
-                File.WriteAllText(path, lyrics, Encoding.UTF8);
+                //File.WriteAllText(path, lyrics, Encoding.UTF8);
                 Assert.IsTrue(true);
             }
             else
+            {
                 Assert.Fail();
+            }
+
             /*using (FileStream file = File.Create(path))
             {
                 file.Write(Encoding.UTF8.GetBytes(lyrics), 0, lyrics.Length);
